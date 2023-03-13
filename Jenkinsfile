@@ -3,7 +3,7 @@ pipeline {
      stages {
           stage('Source') {
                steps {
-                    git branch: 'main',
+                    git branch: 'master',
                         url: 'https://github.com/VorapatRuk/menu'
                }
           }
