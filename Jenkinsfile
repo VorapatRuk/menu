@@ -1,23 +1,15 @@
 pipeline {
-     agent {
-          docker {
-               image 'maven:3-jdk-11'
-               args '-p 33333:8090'
-          }
-     }
-     environment {
-          HOME = '.'
-     }
+     agent any
      stages {
           stage('Source') {
                steps {
                     git branch: 'main',
-                        url: 'https://github.com/ladyusa/wisdom-book'
+                        url: 'https://github.com/VorapatRuk/menu'
                }
           }
           stage('Build') {
                steps {
-                    sh 'mvn package -DskipTests'
+                    bat 'mvn package -DskipTests'
                }
           }
           stage('Test') {
@@ -27,7 +19,7 @@ pipeline {
           }
           stage('Deploy') {
                steps {
-                    sh 'java -jar ./target/book-1.0.jar'
+                    bat 'java -jar ./target/book-1.0.jar'
                }
           }
      }
